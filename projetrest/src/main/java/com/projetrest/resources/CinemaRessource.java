@@ -1,0 +1,64 @@
+package com.projetrest.resources;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
+import java.util.List;
+
+@Path("/cinemas")
+public class CinemaRessource {
+
+    // Liste de Cinema pour simuler une base de données en mémoire
+    private static List<Cinema> cinemas = new ArrayList<>();
+
+    // Méthode pour récupérer tous les cinémas
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Cinema> getAllCinemas() {
+        return cinemas;
+    }
+
+    // Méthode pour récupérer un cinéma par son ID
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Cinema getCinemaById(@PathParam("id") String id) {
+        // Implémentez la logique pour récupérer un cinéma par son ID
+        for (Cinema cinema : cinemas) {
+            if (cinema.getIdCinema().equals(id)) {
+                return cinema;
+            }
+        }
+        return null;
+    }
+
+    // Méthode pour créer un nouveau cinéma
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void createCinema(Cinema cinema) {
+        // Implémentez la logique pour créer un nouveau cinéma
+        cinemas.add(cinema);
+    }
+
+    // Méthode pour mettre à jour un cinéma existant
+    @PUT
+    @Path("/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void updateCinema(@PathParam("id") String id, Cinema cinema) {
+        // Implémentez la logique pour mettre à jour un cinéma
+        for (int i = 0; i < cinemas.size(); i++) {
+            if (cinemas.get(i).getIdCinema().equals(id)) {
+                cinemas.set(i, cinema);
+                return;
+            }
+        }
+    }
+
+    // Méthode pour supprimer un cinéma
+    @DELETE
+    @Path("/{id}")
+    public void deleteCinema(@PathParam("id") String id) {
+        // Implémentez la logique pour supprimer un cinéma
+        cinemas.removeIf(cinema -> cinema.getIdCinema().equals(id));
+    }
+}

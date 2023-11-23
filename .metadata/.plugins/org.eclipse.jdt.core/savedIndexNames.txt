@@ -1,0 +1,23 @@
+INDEX VERSION 1.134+D:\Efrei_cours\Semestre_7\Big_Data_Applications_I\API_And_Webservices\Projet\.metadata\.plugins\org.eclipse.jdt.core
+2754279967.index
+2749738737.index
+1644787514.index
+771250350.index
+4029825107.index
+3444871360.index
+2721081986.index
+752373635.index
+1734112092.index
+3317517327.index
+996096348.index
+720617903.index
+1571286973.index
+2381998201.index
+1865797976.index
+3351506835.index
+1376508135.index
+4264349229.index
+2668173138.index
+3898088922.index
+3925302188.index
+1242502078.index

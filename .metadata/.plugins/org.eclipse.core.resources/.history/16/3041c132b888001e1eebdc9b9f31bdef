@@ -1,0 +1,56 @@
+package com.projetrest.resources;
+
+import com.projetrest.services.Createur;
+import com.projetrest.services.CreateurService;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import java.util.List;
+
+@Path("/createurs")
+public class CreateurRessource {
+
+    private CreateurService createurService;
+
+    // Constructeur
+    public CreateurRessource(CreateurService createurService) {
+        this.createurService = createurService;
+    }
+
+    // Méthode pour récupérer tous les créateurs de films
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Createur> getAllCreateurs() {
+        return createurService.getAllCreateurs();
+    }
+
+    // Méthode pour récupérer un créateur de film par son ID
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Createur getCreateurById(@PathParam("id") String id) {
+        return createurService.getCreateurById(id);
+    }
+
+    // Méthode pour créer un nouveau créateur de film
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void createCreateur(Createur createur) {
+        createurService.createCreateur(createur);
+    }
+
+    // Méthode pour mettre à jour un créateur de film existant
+    @PUT
+    @Path("/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void updateCreateur(@PathParam("id") String id, Createur createur) {
+        createurService.updateCreateur(id, createur);
+    }
+
+    // Méthode pour supprimer un créateur de film
+    @DELETE
+    @Path("/{id}")
+    public void deleteCreateur(@PathParam("id") String id) {
+        createurService.deleteCreateur(id);
+    }
+}

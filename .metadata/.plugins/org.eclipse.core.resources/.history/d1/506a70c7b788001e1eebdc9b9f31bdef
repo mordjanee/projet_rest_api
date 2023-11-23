@@ -1,0 +1,60 @@
+package com.projetrest.resources;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+@Path("/createurs")
+public class CreateurRessource {
+
+    // Méthode pour récupérer tous les créateurs de films
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Createur> getAllCreateurs() {
+        // Implémentez la logique pour récupérer tous les créateurs de films depuis la base de données
+        // Utilisez par exemple une classe de service ou d'accès aux données
+        // Retournez la liste des créateurs au format JSON
+        return createurService.getAllCreateurs();
+    }
+
+    // Méthode pour récupérer un créateur de film par son ID
+    @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Createur getCreateurById(@PathParam("id") String id) {
+        // Implémentez la logique pour récupérer un créateur de film par son ID depuis la base de données
+        // Retournez le créateur au format JSON
+        return createurService.getCreateurById(id);
+    }
+
+    // Méthode pour créer un nouveau créateur de film
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void createCreateur(Createur createur) {
+        // Implémentez la logique pour créer un nouveau créateur de film dans la base de données
+        createurService.createCreateur(createur);
+    }
+
+    // Méthode pour mettre à jour un créateur de film existant
+    @PUT
+    @Path("/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void updateCreateur(@PathParam("id") String id, Createur createur) {
+        // Implémentez la logique pour mettre à jour un créateur de film dans la base de données
+        createurService.updateCreateur(id, createur);
+    }
+
+    // Méthode pour supprimer un créateur de film
+    @DELETE
+    @Path("/{id}")
+    public void deleteCreateur(@PathParam("id") String id) {
+        // Implémentez la logique pour supprimer un créateur de film de la base de données
+        createurService.deleteCreateur(id);
+    }
+}
