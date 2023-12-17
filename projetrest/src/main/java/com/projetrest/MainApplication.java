@@ -6,9 +6,8 @@ import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.servlets.DefaultServlet;
 import org.apache.tomcat.util.descriptor.web.FilterDef;
 import org.apache.tomcat.util.descriptor.web.FilterMap;
-import org.glassfish.jersey.servlet.ServletContainer;
 
-public class AppMain {
+public class MainApplication {
 
     public static void main(String[] args) {
         try {
